@@ -1,0 +1,2 @@
+# Smart-Health-Insurance-Claim-Processing-and-Fraud-Detection-System
+he Smart Health Insurance Claim Processing &amp; Fraud Detection System is a Python Flask web app automating the insurance lifecycle. It replaces manual verification with automated policy validation and rule-based fraud scoring. It offers secure, role-based dashboards for hospitals, policyholders, officers, and admins with an audit trail.
