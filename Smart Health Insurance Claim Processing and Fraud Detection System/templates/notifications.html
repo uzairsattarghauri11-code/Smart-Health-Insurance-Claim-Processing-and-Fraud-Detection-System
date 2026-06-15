@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Notifications{% endblock %}
+{% block content %}
+<div class="page-title">Notifications</div>
+<div class="page-sub">Alerts and updates related to your claims and account.</div>
+
+<div class="card">
+  {% if notes %}
+  <table>
+    <thead><tr><th style="width:180px;">Time</th><th>Message</th></tr></thead>
+    <tbody>
+      {% for n in notes %}
+      <tr><td>{{ n.time }}</td><td>{{ n.message }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">No notifications.</div>
+  {% endif %}
+</div>
+{% endblock %}
