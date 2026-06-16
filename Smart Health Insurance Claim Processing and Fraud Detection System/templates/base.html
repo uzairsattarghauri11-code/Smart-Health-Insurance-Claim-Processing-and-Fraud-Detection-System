@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Smart Health Insurance System{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-animation">
+    <div class="bg-gradient"></div>
+    <div class="ecg top"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg></div>
+    <div class="ecg mid"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg></div>
+    <div class="ecg low"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg></div>
+  </div>
+  {% if session.username %}
+  <nav class="navbar">
+    <div class="nav-brand">Smart Health Insurance</div>
+    <div class="nav-links">
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('notifications') }}">
+        Notifications{% if unread and unread > 0 %} <span class="badge">{{ unread }}</span>{% endif %}
+      </a>
+      {% if session.role == 'admin' %}<a href="{{ url_for('audit') }}">Audit Trail</a>{% endif %}
+      <span class="nav-user">{{ session.name }} ({{ session.role }})</span>
+      <a href="{{ url_for('logout') }}" class="nav-logout">Logout</a>
+    </div>
+  </nav>
+  {% endif %}
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

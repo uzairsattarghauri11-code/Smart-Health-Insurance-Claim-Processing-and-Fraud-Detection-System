@@ -1,0 +1,292 @@
+{
+    "users": {
+        "admin": {
+            "password": "admin123",
+            "role": "admin",
+            "name": "System Administrator"
+        },
+        "city_hospital": {
+            "password": "hosp123",
+            "role": "hospital",
+            "name": "City General Hospital"
+        },
+        "metro_clinic": {
+            "password": "hosp123",
+            "role": "hospital",
+            "name": "Metro Care Clinic"
+        },
+        "officer1": {
+            "password": "off123",
+            "role": "officer",
+            "name": "Insurance Officer Ali"
+        },
+        "ahmed": {
+            "password": "pol123",
+            "role": "policyholder",
+            "name": "Ahmed Khan",
+            "policy_id": "POL100001"
+        },
+        "uzair": {
+            "password": "pol123",
+            "role": "policyholder",
+            "name": "Uzair Sattar",
+            "policy_id": "POL100002"
+        }
+    },
+    "policies": {
+        "POL100001": {
+            "holder": "ahmed",
+            "holder_name": "Ahmed Khan",
+            "coverage_limit": 500000,
+            "used_amount": 6000.0,
+            "covered_treatments": [
+                "surgery",
+                "consultation",
+                "medication",
+                "diagnostics",
+                "emergency"
+            ],
+            "active": true,
+            "start_date": "2026-01-01",
+            "end_date": "2026-12-31"
+        },
+        "POL100002": {
+            "holder": "uzair",
+            "holder_name": "Uzair Sattar",
+            "coverage_limit": 300000,
+            "used_amount": 85000.0,
+            "covered_treatments": [
+                "surgery",
+                "consultation",
+                "medication",
+                "diagnostics",
+                "emergency"
+            ],
+            "active": true,
+            "start_date": "2026-02-01",
+            "end_date": "2027-01-31"
+        }
+    },
+    "hospitals": {
+        "city_hospital": {
+            "name": "City General Hospital",
+            "eligible": true,
+            "reg_no": "HOSP-001"
+        },
+        "metro_clinic": {
+            "name": "Metro Care Clinic",
+            "eligible": true,
+            "reg_no": "HOSP-002"
+        }
+    },
+    "claims": {
+        "CLM274334": {
+            "claim_id": "CLM274334",
+            "hospital": "city_hospital",
+            "hospital_name": "City General Hospital",
+            "policy_id": "POL100002",
+            "patient": "Uzair Sattar",
+            "treatment": "surgery",
+            "amount": 85000.0,
+            "documents": true,
+            "fraud_score": 0,
+            "risk_level": "LOW",
+            "fraud_reasons": [
+                "No risk indicators found"
+            ],
+            "status": "Approved",
+            "submitted_at": "2026-06-04 09:12:57",
+            "reviewed_by": "officer1",
+            "remarks": "Documents verified, claim approved."
+        },
+        "CLM940997": {
+            "claim_id": "CLM940997",
+            "hospital": "city_hospital",
+            "hospital_name": "City General Hospital",
+            "policy_id": "POL100001",
+            "patient": "Ahmed Khan",
+            "treatment": "consultation",
+            "amount": 6000.0,
+            "documents": true,
+            "fraud_score": 0,
+            "risk_level": "LOW",
+            "fraud_reasons": [
+                "No risk indicators found"
+            ],
+            "status": "Approved",
+            "submitted_at": "2026-06-07 09:12:57",
+            "reviewed_by": "officer1",
+            "remarks": "Routine consultation approved."
+        },
+        "CLM158629": {
+            "claim_id": "CLM158629",
+            "hospital": "metro_clinic",
+            "hospital_name": "Metro Care Clinic",
+            "policy_id": "POL100002",
+            "patient": "Uzair Sattar",
+            "treatment": "diagnostics",
+            "amount": 18000.0,
+            "documents": true,
+            "fraud_score": 0,
+            "risk_level": "LOW",
+            "fraud_reasons": [
+                "No risk indicators found"
+            ],
+            "status": "Pending Review",
+            "submitted_at": "2026-06-14 09:12:57",
+            "reviewed_by": null,
+            "remarks": ""
+        },
+        "CLM162888": {
+            "claim_id": "CLM162888",
+            "hospital": "metro_clinic",
+            "hospital_name": "Metro Care Clinic",
+            "policy_id": "POL100001",
+            "patient": "Ahmed Khan",
+            "treatment": "cosmetic",
+            "amount": 420000.0,
+            "documents": false,
+            "fraud_score": 40,
+            "risk_level": "MEDIUM",
+            "fraud_reasons": [
+                "Treatment not covered by policy (+25)",
+                "Unusually high claim amount (+15)"
+            ],
+            "status": "Rejected",
+            "submitted_at": "2026-06-11 09:12:57",
+            "reviewed_by": "officer1",
+            "remarks": "Treatment not covered and amount abnormally high."
+        },
+        "CLM518631": {
+            "claim_id": "CLM518631",
+            "hospital": "city_hospital",
+            "hospital_name": "City General Hospital",
+            "policy_id": "POL100001",
+            "patient": "Ahmed Khan",
+            "treatment": "medication",
+            "amount": 9500.0,
+            "documents": true,
+            "fraud_score": 0,
+            "risk_level": "LOW",
+            "fraud_reasons": [
+                "No risk indicators found"
+            ],
+            "status": "Pending Review",
+            "submitted_at": "2026-06-15 09:12:57",
+            "reviewed_by": null,
+            "remarks": ""
+        },
+        "CLM768511": {
+            "claim_id": "CLM768511",
+            "hospital": "metro_clinic",
+            "hospital_name": "Metro Care Clinic",
+            "policy_id": "POL100002",
+            "patient": "Uzair Sattar",
+            "treatment": "emergency",
+            "amount": 30000.0,
+            "documents": false,
+            "fraud_score": 0,
+            "risk_level": "LOW",
+            "fraud_reasons": [
+                "No risk indicators found"
+            ],
+            "status": "Info Requested",
+            "submitted_at": "2026-06-13 09:12:57",
+            "reviewed_by": "officer1",
+            "remarks": "Please upload discharge summary and bills."
+        }
+    },
+    "notifications": {},
+    "audit_trail": [
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "city_hospital",
+            "action": "SUBMIT_CLAIM",
+            "details": "Claim CLM274334 submitted for POL100002"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "officer1",
+            "action": "APPROVE_CLAIM",
+            "details": "Claim CLM274334 marked Approved"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "city_hospital",
+            "action": "SUBMIT_CLAIM",
+            "details": "Claim CLM940997 submitted for POL100001"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "officer1",
+            "action": "APPROVE_CLAIM",
+            "details": "Claim CLM940997 marked Approved"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "metro_clinic",
+            "action": "SUBMIT_CLAIM",
+            "details": "Claim CLM158629 submitted for POL100002"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "metro_clinic",
+            "action": "SUBMIT_CLAIM",
+            "details": "Claim CLM162888 submitted for POL100001"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "officer1",
+            "action": "REJECT_CLAIM",
+            "details": "Claim CLM162888 marked Rejected"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "city_hospital",
+            "action": "SUBMIT_CLAIM",
+            "details": "Claim CLM518631 submitted for POL100001"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "metro_clinic",
+            "action": "SUBMIT_CLAIM",
+            "details": "Claim CLM768511 submitted for POL100002"
+        },
+        {
+            "timestamp": "2026-06-16 09:12:57",
+            "actor": "officer1",
+            "action": "REQUEST_INFO",
+            "details": "Claim CLM768511 marked Info Requested"
+        },
+        {
+            "timestamp": "2026-06-16 09:13:13",
+            "actor": "officer1",
+            "action": "LOGIN",
+            "details": "User logged in"
+        },
+        {
+            "timestamp": "2026-06-16 09:15:51",
+            "actor": "city_hospital",
+            "action": "LOGIN",
+            "details": "User logged in"
+        },
+        {
+            "timestamp": "2026-06-16 09:17:32",
+            "actor": "officer1",
+            "action": "LOGIN",
+            "details": "User logged in"
+        },
+        {
+            "timestamp": "2026-06-16 09:19:24",
+            "actor": "uzair",
+            "action": "LOGIN",
+            "details": "User logged in"
+        },
+        {
+            "timestamp": "2026-06-16 09:20:05",
+            "actor": "admin",
+            "action": "LOGIN",
+            "details": "User logged in"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Hospital Dashboard{% endblock %}
+{% block content %}
+<div class="toolbar">
+  <div>
+    <div class="page-title">Hospital Dashboard</div>
+    <div class="page-sub">{{ session.name }}</div>
+  </div>
+  <a href="{{ url_for('submit_claim') }}" class="btn">+ Submit New Claim</a>
+</div>
+
+<div class="card">
+  <h2>My Submitted Claims</h2>
+  {% if claims %}
+  <table>
+    <thead>
+      <tr><th>Claim ID</th><th>Patient</th><th>Treatment</th><th>Amount</th><th>Risk</th><th>Status</th><th>Submitted</th></tr>
+    </thead>
+    <tbody>
+      {% for c in claims %}
+      <tr>
+        <td>{{ c.claim_id }}</td>
+        <td>{{ c.patient }}</td>
+        <td>{{ c.treatment }}</td>
+        <td>{{ "{:,.0f}".format(c.amount) }}</td>
+        <td><span class="pill pill-{{ c.risk_level|lower }}">{{ c.fraud_score }}/100 {{ c.risk_level }}</span></td>
+        <td><span class="pill pill-{{ c.status.split(' ')[0]|lower }}">{{ c.status }}</span></td>
+        <td>{{ c.submitted_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">No claims submitted yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

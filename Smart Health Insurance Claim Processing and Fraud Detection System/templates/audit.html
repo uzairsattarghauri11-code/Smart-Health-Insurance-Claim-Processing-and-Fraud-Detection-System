@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Audit Trail{% endblock %}
+{% block content %}
+<div class="page-title">Audit Trail</div>
+<div class="page-sub">Chronological record of all system actions (most recent first).</div>
+
+<div class="card">
+  {% if entries %}
+  <table>
+    <thead><tr><th style="width:180px;">Timestamp</th><th>Actor</th><th>Action</th><th>Details</th></tr></thead>
+    <tbody>
+      {% for e in entries %}
+      <tr><td>{{ e.timestamp }}</td><td>{{ e.actor }}</td><td>{{ e.action }}</td><td>{{ e.details }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">No audit records.</div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Smart Health Insurance System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-animation">
+    <div class="bg-gradient"></div>
+    <div class="ecg top"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg></div>
+    <div class="ecg mid"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg></div>
+    <div class="ecg low"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0 60 L200 60 L230 60 L250 20 L270 100 L290 40 L310 60 L500 60 L530 60 L550 20 L570 100 L590 40 L610 60 L800 60 L830 60 L850 20 L870 100 L890 40 L910 60 L1200 60" fill="none" stroke="#e23b3b" stroke-width="2.5"/></svg></div>
+  </div>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="med-emblem"><span>＋</span></div>
+      <h1>Smart Health Insurance</h1>
+      <p class="sub">Claim Processing & Fraud Detection System</p>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" name="username" required autofocus>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-block">Login</button>
+      </form>
+
+      <div class="cred-hint">
+        <strong>Demo accounts:</strong><br>
+        Admin — <code>admin</code> / <code>admin123</code><br>
+        Hospital — <code>city_hospital</code> / <code>hosp123</code><br>
+        Officer — <code>officer1</code> / <code>off123</code><br>
+        Policyholder — <code>uzair</code> / <code>pol123</code>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
